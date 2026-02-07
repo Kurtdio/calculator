@@ -2,11 +2,37 @@ using System;
 
 public static class Calculator
 {
-    public static double? Calculate(int first, int second, string operation)
+     static double Calculator(int num1, int num2, char operation)
     {
-        //write your business logic in here
+        switch (operation)
+        {
+            case '+':
+                return num1 + num2;
 
-        return null;
+            case '-':
+                return num1 - num2;
+
+            case '*':
+                return num1 * num2;
+
+            case '/':
+                if (num2 == 0)
+                {
+                    Console.WriteLine("Cannot divide by zero");
+                    return 0;
+                }
+                return (double)num1 / num2;
+
+            case '%':
+                if (num2 == 0)
+                {
+                    Console.WriteLine("Cannot modulo by zero");
+                    return 0;
+                }
+                return num1 % num2;
+
+            default:
+                return 0;
+        }
     }
 }
-
