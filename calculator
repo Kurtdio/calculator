@@ -1,0 +1,88 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        char operation = ' ';
+
+        while (operation != '=')
+        {
+           
+            Console.Write("Enter first number: ");
+            int num1 = int.Parse(Console.ReadLine());
+
+           
+            Console.Write("Enter second number: ");
+            int num2 = int.Parse(Console.ReadLine());
+
+            
+            while (true)
+            {
+                Console.Write("Choose operation (+, -, *, /, %, = to exit): ");
+                operation = char.Parse(Console.ReadLine());
+
+                if (operation == '+' || operation == '-' || operation == '*' ||
+                    operation == '/' || operation == '%' || operation == '=')
+                {
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Incorrect Operation Used, please try again");
+                }
+            }
+
+            
+            if (operation == '=')
+            {
+                break;
+            }
+
+          
+            double result = Calculator(num1, num2, operation);
+
+            
+            Console.WriteLine();
+            Console.WriteLine("Result: " + result);
+            Console.WriteLine();
+        }
+
+        Console.WriteLine("Program exited.");
+    }
+
+   
+    static double Calculator(int num1, int num2, char operation)
+    {
+        switch (operation)
+        {
+            case '+':
+                return num1 + num2;
+
+            case '-':
+                return num1 - num2;
+
+            case '*':
+                return num1 * num2;
+
+            case '/':
+                if (num2 == 0)
+                {
+                    Console.WriteLine("Cannot divide by zero");
+                    return 0;
+                }
+                return (double)num1 / num2;
+
+            case '%':
+                if (num2 == 0)
+                {
+                    Console.WriteLine("Cannot modulo by zero");
+                    return 0;
+                }
+                return num1 % num2;
+
+            default:
+                return 0;
+        }
+    }
+}
